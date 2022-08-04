@@ -62,8 +62,17 @@ public class DaoCachorro implements ICrud<Cachorro> {
 
 	@Override
 	public void excluir(int id) {
-		// TODO Auto-generated method stub
-		
+		String sql = "delete from cachorro where id = " + id;
+		Connection con = Conexao.conectar();
+		try {
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.execute();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		finally {
+			Conexao.fechar();
+		}	
 	}
 
 	@Override
@@ -87,10 +96,8 @@ public class DaoCachorro implements ICrud<Cachorro> {
 		}
 		finally {
 			Conexao.fechar();
-		}
-		
-		return cachorro;
-		
+		}		
+		return cachorro;		
 	}
 
 	@Override
@@ -118,8 +125,6 @@ public class DaoCachorro implements ICrud<Cachorro> {
 		}	
 		return cachorros;
 	}
-	
-	
-
+		
 }
 

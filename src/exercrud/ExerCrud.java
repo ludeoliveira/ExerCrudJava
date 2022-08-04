@@ -6,17 +6,16 @@ import exercrud.utilidades.Conexao;
 
 public class ExerCrud {
 
-	public static void main(String[] args) {
-		DaoCachorro dc = new DaoCachorro();
-		
+	public static void main(String[] args) {		
 //		testarConexao();
 //		testarSalvar();
 //		testarAlterar();
 //		testarConsultar1();
 		testarConsultar();
+//		testarExcluir();
 	}
 
-//	testes de requisições:
+//	métodos testes de requisições:
 
 	static void testarConexao() {
 		if (Conexao.conectar() != null) {
@@ -29,7 +28,6 @@ public class ExerCrud {
 	static void testarSalvar() {
 		DaoCachorro dc = new DaoCachorro();
 		Cachorro c1 = new Cachorro("Dalmata", "Não Esportistas", "56 a 61 cm", "Amigável, ativo, brincalhão, extrovertido");
-
 		if (dc.salvar(c1)) {
 			System.out.println("Cachorro cadastrado com sucesso");
 		}
@@ -40,12 +38,11 @@ public class ExerCrud {
 	
 	static void testarAlterar() {
 		DaoCachorro dc = new DaoCachorro();
-		Cachorro cachorro = dc.consultar(1);
-		cachorro.setRaca("Border Collie");
-		cachorro.setGrupo("Grupo dos Pastores");
-		cachorro.setAltura("48 a 56 cm");
-		cachorro.setPersonalidade("Gentil, Inteligente, ágil");
-
+		Cachorro cachorro = dc.consultar(3);
+		cachorro.setRaca("Beagle");
+		cachorro.setGrupo("Grupo dos Beagles");
+		cachorro.setAltura("30 a 31 cm");
+		cachorro.setPersonalidade("Dócil, Inteligente, companheiro");
 		if (dc.alterar(cachorro)) {
 			System.out.println("Cachorro alterado com sucesso");
 		}
@@ -63,6 +60,11 @@ public class ExerCrud {
 	static void testarConsultar() { 
 		DaoCachorro dc = new DaoCachorro();
 		System.out.println(dc.consultar());
+	}
+	
+	static void testarExcluir() {
+		DaoCachorro dc = new DaoCachorro();
+		dc.excluir(2);
 	}
 
 }

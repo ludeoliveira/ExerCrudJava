@@ -61,6 +61,5 @@ public class Cachorro {
 
 	public void setPersonalidade(String personalidade) {
 		this.personalidade = personalidade;
-	}
-	
+	}	
 }
