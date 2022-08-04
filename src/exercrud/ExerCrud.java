@@ -10,7 +10,10 @@ public class ExerCrud {
 		DaoCachorro dc = new DaoCachorro();
 		
 //		testarConexao();
-		testarSalvar();
+//		testarSalvar();
+//		testarAlterar();
+//		testarConsultar1();
+		testarConsultar();
 	}
 
 //	testes de requisições:
@@ -33,7 +36,33 @@ public class ExerCrud {
 		else {
 			System.out.println("Erro ao cadastrar");
 		}
+	}
+	
+	static void testarAlterar() {
+		DaoCachorro dc = new DaoCachorro();
+		Cachorro cachorro = dc.consultar(1);
+		cachorro.setRaca("Border Collie");
+		cachorro.setGrupo("Grupo dos Pastores");
+		cachorro.setAltura("48 a 56 cm");
+		cachorro.setPersonalidade("Gentil, Inteligente, ágil");
 
+		if (dc.alterar(cachorro)) {
+			System.out.println("Cachorro alterado com sucesso");
+		}
+		else {
+			System.out.println("Erro ao alterar dados");
+		}
+	}
+	
+	static void testarConsultar1() { 
+		DaoCachorro dc = new DaoCachorro();
+		Cachorro cachorro = dc.consultar(1);
+		System.out.println(cachorro);
+	}
+	
+	static void testarConsultar() { 
+		DaoCachorro dc = new DaoCachorro();
+		System.out.println(dc.consultar());
 	}
 
 }
